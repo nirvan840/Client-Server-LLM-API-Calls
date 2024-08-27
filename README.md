@@ -9,11 +9,12 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). The script
 
 ## Approach 
 ### Choice of LLM API: **Groq** [(API Cookbook)](https://github.com/groq/groq-api-cookbook) [Docs](https://console.groq.com/docs/quickstart)
-  * Extensive, easy-to-read documentation when compared to Gemma.
+  * Extensive, easy-to-read documentation when compared to Gemma + new and upcoming.
   * Support of multiple models and agent calling.
   * Faster output speeds and low latency.
 
 ### Code Explained
 
- 
+## References
+* [Getting Started with Groq API](https://www.youtube.com/watch?v=S53BanCP14c)
 
