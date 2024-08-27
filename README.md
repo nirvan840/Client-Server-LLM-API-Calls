@@ -13,8 +13,10 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). The script
   * Support of multiple models and agent calling.
   * Faster output speeds and low latency.
 
-### Code Explained
+&nbsp;
+## Code Explained
 
+&nbsp;
 ## References
 * [Getting Started with Groq API](https://www.youtube.com/watch?v=S53BanCP14c)
 
