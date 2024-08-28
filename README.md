@@ -8,12 +8,13 @@
 ## Level 1: API Calls
 _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The script should take input from a text file and save the received responses in a .json file._
 
-### Choice of LLM API: **Groq** 
+### <b> <i> Choice of LLM API: **Groq** </b> </i>
 * Extensive, easy-to-read documentation when compared to Gemma.
 * Support of multiple models and agent calling.
 * Faster output speeds and low latency.
+
    
-### Code Explained
+### <b> <i> Code Explained </b> </i>
 * `API_script.py`: Python script to read and store input as required.
   * 1 additional **command line argument** can be passed which is used as **model_choice**
   * Reads from **input.txt** and stores output in **output.json**
@@ -26,7 +27,24 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
 <small> _Note: All lines of `input.txt` file are treated as the prompt to the LLM_. <small><br>
 <small> _Note: `output.json` file overridden for each new response._ <small>
 
-### References
+
+### <b> <i> Theory </b> </i>
+##### Why Use top_p?
+* **Diversity in Output**: By adjusting top_p, you can control the diversity of the generated text.
+* **Lower top_p values make the output more focused and repetitive, while higher values increase diversity but may introduce more randomness.**
+##### Temperature
+* [What is Temp Doing?](https://www.youtube.com/watch?v=YjVuJjmgclU)
+  * Small t (say 0.5) -> initial logits: [2,1,0.5] -> logits / T: [4,2,1] => Clearly the bigger probability got bigger by more margin.
+  * Big t (say 2) -> [2,1,0.5] -> [1,0.5,0.25] => All probabilities got closer
+* The temperature parameter in large language models (LLMs) is a key hyperparameter that controls the** randomness or creativity of the model's outputs during text generation**. It affects how the model samples from the probability distribution of possible next tokens.
+##### Temp VS top_p
+* Temp -> Increases random sampling ( more Temp = less random )
+* top_p -> Restricts choices of model ( more top_p = more choices for sampling )
+##### Stop token
+* stop = stop token corresponding to halting text generation
+
+
+### <b> <i> References </b> </i>
 * [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
 * [Groq Playground](https://console.groq.com/playground)
 * [Groq Documentation](https://console.groq.com/docs/quickstart)
