@@ -17,7 +17,7 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
 * `API_script.py`: Python script to read and store input as required.
   * Reads from **input.txt** and stores output in **output.json**
 * `API_class.py`: Python code for **APIcall** class.
-  * LLM Parameters: model_name (default: "Gemma2 9B"), stop_token (default: None), <br>
+  * LLM Parameters: API_Key, model_name (default: "Gemma2 9B"), stop_token (default: None), <br>
     context_size (default: 1024), temperature (default: 0.5), top_p (default: 1) can be <br>
     defined by the user while instantiating an object.
   * **input_filename** and **output_filename** can be specified while calling the object.
