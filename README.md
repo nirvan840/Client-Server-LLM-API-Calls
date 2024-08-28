@@ -28,25 +28,29 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
 <small> _Note: `output.json` file overridden for each new response._ <small>
 
 
-### <b> <i> Theory </b> </i>
-##### Why Use top_p?
-* **Diversity in Output**: By adjusting top_p, you can control the diversity of the generated text.
-* Lower top_p values make the output more focused and repetitive, while higher values increasee <br>
-  diversity but may introduce more randomness.
-##### Temperature
-* [What is Temp Doing?](https://www.youtube.com/watch?v=YjVuJjmgclU)
-  * Small Temp (say 0.5) -> initial logits: [2,1,0.5] -> logits/Temp = [4,2,1] => Clearly the bigger <br>
-    probability got bigger by more margin.
-  * Big t (say 2) -> [2,1,0.5] -> [1,0.5,0.25] => All probabilities got closer
-* The temperature parameter in large language models (LLMs) is a key hyperparameter that controls the <br>
-  randomness or creativity of the model's outputs during text generation**. It affects how the model samples <br>
-  from the probability distribution of possible next tokens.
-##### Temp VS top_p
-* Temp -> Increases random sampling ( more Temp = less random )
-* top_p -> Restricts choices of model ( more top_p = more choices for sampling )
-##### Stop token
-* stop = stop token corresponding to halting text generation
-
+### <b> <i> Theory of LLM Parameters </b> </i>
+<details>
+   <summary> <i> Details </i> </summary>
+   
+   ##### Why Use top_p?
+   * **Diversity in Output**: By adjusting top_p, you can control the diversity of the generated text.
+   * Lower top_p values make the output more focused and repetitive, while higher values increasee <br>
+     diversity but may introduce more randomness.
+   ##### Temperature
+   * [What is Temp Doing?](https://www.youtube.com/watch?v=YjVuJjmgclU)
+     * Small Temp (say 0.5) -> initial logits: [2,1,0.5] -> logits/Temp = [4,2,1] => Clearly the bigger <br>
+       probability got bigger by more margin.
+     * Big t (say 2) -> [2,1,0.5] -> [1,0.5,0.25] => All probabilities got closer
+   * The temperature parameter in large language models (LLMs) is a key hyperparameter that controls the <br>
+     randomness or creativity of the model's outputs during text generation**. It affects how the model samples <br>
+     from the probability distribution of possible next tokens.
+   ##### Temp VS top_p
+   * Temp -> Increases random sampling ( more Temp = less random )
+   * top_p -> Restricts choices of model ( more top_p = more choices for sampling )
+   ##### Stop token
+   * stop = stop token corresponding to halting text generation
+     
+</details>
 
 ### <b> <i> References </b> </i>
 * [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
