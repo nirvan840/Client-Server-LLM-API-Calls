@@ -46,6 +46,6 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
 &nbsp;
 # Transformers, ViT & SAM 
 * Research summary present in respective .md files in the `Research Folder`
-* Includes learnings, references, 
+* Includes learnings, references, new techniques, etc..
 
 
