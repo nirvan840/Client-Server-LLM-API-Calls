@@ -3,7 +3,7 @@
 #### _- 31st Aug. 2024_
 &nbsp;
 
-# Development Assignment [(Repo)](https://github.com/DaSH-Lab-CSIS/DaSH-Lab-Assignment-2024/blob/main/DevelopmentAssignment/README.md)
+# Development Assignment [(DaSH Repo)](https://github.com/DaSH-Lab-CSIS/DaSH-Lab-Assignment-2024/blob/main/DevelopmentAssignment/README.md)
 
 ## Level 1: API Calls
 _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The script should take input from a text file and save the received responses in a .json file._
