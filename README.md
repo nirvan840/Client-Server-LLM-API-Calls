@@ -52,7 +52,7 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
      
 </details>
 
-### <b> <i> References </b> </i>
+### <b> <i> References for the section </b> </i>
 * [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
 * [Groq Playground](https://console.groq.com/playground)
 * [Groq Documentation](https://console.groq.com/docs/quickstart)
@@ -62,6 +62,51 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
 &nbsp;
 
 ## Level 2: Client Server
+
+### <b> <i> Theory of Client-Server Model </b> </i>
+<details>
+   <summary> <i> Details </i> </summary>
+
+   #### Domain Name System (DNS)
+   
+   1. **Problem with IP Addresses:**
+      - Every device connected to the internet is identified by a unique IP address, which is a numerical label like `192.168.1.1` for IPv4 or a more complex string like `2001:0db8:85a3:0000:0000:8a2e:0370:7334` 
+        for IPv6.
+      - However, remembering these numbers is not practical for most people. Imagine trying to remember the IP address for every website you visit!
+   
+   2. **Domain Names:**
+      - To make things easier, domain names were introduced. Domain names are human-readable addresses like `www.google.com`, which are easier to remember and use.
+      - Domain names are hierarchical and usually consist of a top-level domain (TLD) like `.com`, `.org`, or `.edu`, followed by a second-level domain (like `google` in `google.com`).
+   
+   3. **DNS as a Solution:**
+      - The Domain Name System (DNS) acts as a translator or a phonebook for the internet.
+      - When you type a domain name into your web browser, your computer requests a DNS server to find the IP address associated with that domain name.
+   
+   4. **How DNS Works:**
+      - **DNS Query:** When you enter a domain name (e.g., `www.example.com`), your computer first checks its local DNS cache to see if it already knows the IP address. If not, it sends a DNS query to a DNS 
+         resolver (usually provided by your ISP).
+      - **DNS Resolver:** The resolver checks its cache. If it doesn't find the answer, it starts hierarchically querying other DNS servers, starting from the root DNS servers.
+      - **Root, TLD, and Authoritative DNS Servers:**
+        - **Root Servers:** Direct the resolver to the appropriate top-level domain (TLD) server.
+        - **TLD Servers:** These direct the resolver to the authoritative DNS server for the specific domain (e.g., `example.com`).
+        - **Authoritative DNS Server:** This server provides the actual IP address associated with the domain name.
+      - **IP Address Returned:** Once the IP address is found, it's sent back to your computer, and your browser can then connect to the website using that IP address.
+   
+   5. **Dynamic IP Addresses:**
+      - IP addresses can change, especially with dynamic IPs used by most ISPs. The DNS system is designed to handle this by allowing domain owners to update their DNS records with new IP addresses, ensuring 
+        that users can still reach their websites.
+   
+   6. **Why DNS is Important:**
+      - DNS makes the internet user-friendly by allowing us to use easy-to-remember domain names instead of complex IP addresses.
+      - It also provides a level of abstraction, allowing websites to change servers or IP addresses without affecting the end-user experience.
+   
+   In summary, DNS is like the internet's directory service, translating human-readable domain names into machine-readable IP addresses, making it possible for us to access websites easily without needing to        remember numerical IP addresses.
+   
+</details>
+
+### <b> <i> References for the section </i> </b>
+* [Client-Server Model](https://www.geeksforgeeks.org/client-server-model/)
+* [Domain Name System (DNS)](https://www.geeksforgeeks.org/domain-name-system-dns-in-application-layer/)
 
 
 &nbsp;
