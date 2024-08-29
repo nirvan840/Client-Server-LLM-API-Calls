@@ -1,8 +1,8 @@
 # DaSHLab Assignment 2024 
 > ### [Home DaSH Lab](https://arnabkrpaul.github.io/Dashlab/index.html) | [Assignment 2024](https://docs.google.com/document/d/1oK0p87q-WvWZB3XpIarPaVZF3DQUhFqfxLy2yW__mEg/pub?urp=gmail_link#h.39v2ctm6mmq)
 > ### _Segment Anything Model (SAM)_
-> ### _Nirvan Patil (2022AAPS1250G)_
-> ### _31st Aug. 2024_
+> #### _Nirvan Patil (2022AAPS1250G)_
+> ##### _31st Aug. 2024_
 &nbsp;
 
 # Development Assignment [(DaSH Repo)](https://github.com/DaSH-Lab-CSIS/DaSH-Lab-Assignment-2024/blob/main/DevelopmentAssignment/README.md)
