@@ -1,12 +1,16 @@
 # DaSHLab Assignment 2024 [(Assignment)](https://docs.google.com/document/d/1oK0p87q-WvWZB3XpIarPaVZF3DQUhFqfxLy2yW__mEg/pub?urp=gmail_link#h.39v2ctm6mmq)
-#### _- Nirvan Patil (2022AAPS1250G)_
-#### _- 31st Aug. 2024_
+> #### _Segment Anything Model (SAM)_
+> #### _Nirvan Patil (2022AAPS1250G)_
+> #### _31st Aug. 2024_
 &nbsp;
 
 # Development Assignment [(DaSH Repo)](https://github.com/DaSH-Lab-CSIS/DaSH-Lab-Assignment-2024/blob/main/DevelopmentAssignment/README.md)
 
 ## Level 1: API Calls
-_Make a script that makes API calls to an LLM API (like gemma, grok). <br> The script should take input from a text file and save the received responses in a .json file._
+<small> <i>
+> Make a script that makes API calls to an LLM API (like Gemma, Groq). <br>
+> The script should take input from a text file and save the received responses in a .json file.
+</i> </small>
 
 ### <b> <i> Choice of LLM API: **Groq** </b> </i>
 * Extensive, easy-to-read documentation when compared to Gemma.
@@ -24,8 +28,8 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
     defined by the user while instantiating an object.
   * **input_filename** and **output_filename** can be specified while calling the object.
 
-<small> _Note: All lines of `input.txt` file are treated as the prompt to the LLM_. <small><br>
-<small> _Note: `output.json` file overridden for each new response._ <small>
+<small> _Note: All lines of **input.txt** file are treated as the prompt to the LLM_. <small><br>
+<small> _Note: **output.json** file overridden for each new response._ <small>
 
 
 ### <b> <i> Theory of LLM Parameters </b> </i>
@@ -34,7 +38,7 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
    
    ##### Why Use top_p?
    * **Diversity in Output**: By adjusting top_p, you can control the diversity of the generated text.
-   * Lower top_p values make the output more focused and repetitive, while higher values increasee <br>
+   * Lower top_p values make the output more focused and repetitive, while higher values increase <br>
      diversity but may introduce more randomness.
    ##### Temperature
    * [What is Temp Doing?](https://www.youtube.com/watch?v=YjVuJjmgclU)
@@ -52,7 +56,7 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
      
 </details>
 
-### <b> <i> References for the section </b> </i>
+### <b> <i> References for this section </b> </i>
 * [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
 * [Groq Playground](https://console.groq.com/playground)
 * [Groq Documentation](https://console.groq.com/docs/quickstart)
@@ -62,12 +66,18 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
 &nbsp;
 
 ## Level 2: Client Server
+<small> <i>
+> Scale up what you have implemented in Level 1 to a client-server model. <br>
+> Create multiple clients that can read input and send this input to a server. <br>
+> Server -> API call -> sends the responses back to all clients along with the original prompt. <br>
+> The clients should now write the response they receive from the server to a .json file. <br>
+> Having done this, create a **bash script** that launches all the clients and the server. <br>
+</i> </small>
 
-### <b> <i> Theory of Client-Server Model </b> </i>
+### <b> <i> Theory explored </b> </i>
+
 <details>
-   <summary> <i> Details </i> </summary>
-
-   #### Domain Name System (DNS)
+   <summary> <i> Domain Name System (DNS) </i> </summary>
    
    1. **Problem with IP Addresses:**
       - Every device connected to the internet is identified by a unique IP address, which is a numerical label like `192.168.1.1` for IPv4 or a more complex string like `2001:0db8:85a3:0000:0000:8a2e:0370:7334` 
@@ -100,13 +110,33 @@ _Make a script that makes API calls to an LLM API (like gemma, grok). <br> The s
       - DNS makes the internet user-friendly by allowing us to use easy-to-remember domain names instead of complex IP addresses.
       - It also provides a level of abstraction, allowing websites to change servers or IP addresses without affecting the end-user experience.
    
-   In summary, DNS is like the internet's directory service, translating human-readable domain names into machine-readable IP addresses, making it possible for us to access websites easily without needing to        remember numerical IP addresses.
-   
 </details>
 
-### <b> <i> References for the section </i> </b>
-* [Client-Server Model](https://www.geeksforgeeks.org/client-server-model/)
+<details>
+   <summary> <i> Containerization and Kubernetes </i> </summary>
+
+   1. **Monolith Architecture:** Monolithic architecture is a traditional software development approach where all the components of an application are tightly coupled and run as a single, unified unit. In this      architecture, the entire application is built and deployed as one large codebase. This means the application's functions, including user interface, business logic, and data access layers, are         
+   contained within a single platform or executable.
+   2. **Microservices:** Microservices architecture is a design approach where an application comprises small, independent services communicating with each other over a network. Each service is 
+   responsible for a specific functionality and can be developed, deployed, and scaled independently. 
+   3. **Containerization:** Containerization is a lightweight form of virtualization that allows you to package an application and its dependencies into a single container. This container can run consistently 
+   across different computing environments, such as development, testing, and production. Containers are isolated from each other and the underlying operating system, making them portable and efficient.
+   4. **Kubernetes:** Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
+  
+</details>
+
+### <b> <i> References for this section </i> </b>
+* [Client-Server Model 1](https://www.geeksforgeeks.org/client-server-model/)
+* [Client-Server Model 2](https://youtu.be/L5BlpPU_muY)
 * [Domain Name System (DNS)](https://www.geeksforgeeks.org/domain-name-system-dns-in-application-layer/)
+* [Web Sockets](https://www.youtube.com/watch?v=favi7avxIag)<br>
+* [Python Web Sockets Coded](https://www.youtube.com/watch?v=3QiPPX-KeSc&t=114s)
+
+And,
+  
+* [Monolithic Arch. & Microservices](https://www.youtube.com/watch?v=7IFJb-uLEaI)
+* [Containerization](https://www.youtube.com/watch?v=0qotVMX-J5s)
+* [Kubernetes](https://www.youtube.com/watch?v=VnvRFRk_51k)
 
 
 &nbsp;
