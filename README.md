@@ -1,4 +1,5 @@
-# DaSHLab Assignment 2024 [(Assignment)](https://docs.google.com/document/d/1oK0p87q-WvWZB3XpIarPaVZF3DQUhFqfxLy2yW__mEg/pub?urp=gmail_link#h.39v2ctm6mmq)
+# DaSHLab Assignment 2024 
+> ### [Home DaSH Lab](https://arnabkrpaul.github.io/Dashlab/index.html) | [Assignment 2024](https://docs.google.com/document/d/1oK0p87q-WvWZB3XpIarPaVZF3DQUhFqfxLy2yW__mEg/pub?urp=gmail_link#h.39v2ctm6mmq)
 > ### _Segment Anything Model (SAM)_
 > ### _Nirvan Patil (2022AAPS1250G)_
 > ### _31st Aug. 2024_
@@ -8,33 +9,38 @@
 
 ## Level 1: API Calls
 <small> <i>
-> Make a script that makes API calls to an LLM API (like Gemma, Groq). <br>
-> The script should take input from a text file and save the received responses in a .json file.
+> * Make a script that makes API calls to an LLM API (like Gemma, Groq). <br>
+> * The script should take input from a text file and save the received responses in a .json file.
 </i> </small>
 
+
+.<br> 
 ### <b> <i> Choice of LLM API: **Groq** </b> </i>
 * Extensive, easy-to-read documentation when compared to Gemma.
 * Support of multiple models and agent calling.
 * Faster output speeds and low latency.
 
-   
+
+.<br>  
 ### <b> <i> Code Explained </b> </i>
-* `API_script.py`: Python script to read and store input as required.
+><tiny> _Note: All lines of **input.txt** file are treated as the prompt to the LLM_. </tiny><br>
+><tiny> _Note: **output.json** file overridden for each new response._ </tiny>
+
+* `API_script.py`: _Python script to read and store input as required._
   * 1 additional **command line argument** can be passed which is used as **model_choice**
   * Reads from **input.txt** and stores output in **output.json**
-* `API_class.py`: Python code for **APIcall** class.
+    
+* `API_class.py`: _Python code for **APIcall** class._
   * **LLM Parameters:** API_Key, model_name (default: "Gemma2 9B"), stop_token (default: None), <br>
-    context_size (default: 1024), temperature (default: 0.5), top_p (default: 1) can be <br>
-    defined by the user while instantiating an object.
+    context_size (default: 1024), temperature (default: 0.5), top_p (default: 1) can be defined <br>
+    by the user while instantiating an object.
   * **input_filename** and **output_filename** can be specified while calling the object.
 
-<small> _Note: All lines of **input.txt** file are treated as the prompt to the LLM_. <small><br>
-<small> _Note: **output.json** file overridden for each new response._ <small>
 
-
-### <b> <i> Theory of LLM Parameters </b> </i>
+.<br> 
+### <b> <i> Theory explored </b> </i>
 <details>
-   <summary> <i> Details </i> </summary>
+   <summary> <i> LLM Parameters </i> </summary>
    
    ##### Why Use top_p?
    * **Diversity in Output**: By adjusting top_p, you can control the diversity of the generated text.
@@ -45,8 +51,8 @@
      * Small Temp (say 0.5) -> initial logits: [2,1,0.5] -> logits/Temp = [4,2,1] => Clearly the bigger <br>
        probability got bigger by more margin.
      * Big t (say 2) -> [2,1,0.5] -> [1,0.5,0.25] => All probabilities got closer
-   * The temperature parameter in large language models (LLMs) is a key hyperparameter that controls the <br>
-     randomness or creativity of the model's outputs during text generation**. It affects how the model samples <br>
+   * The temperature parameter in large language models (LLMs) is a key hyperparameter that controls <br> the
+     randomness or creativity of the model's outputs during text generation**. It affects how the model <br> samples
      from the probability distribution of possible next tokens.
    ##### Temp VS top_p
    * Temp -> Increases random sampling ( more Temp = less random )
@@ -56,6 +62,8 @@
      
 </details>
 
+
+.<br> 
 ### <b> <i> References for this section </b> </i>
 * [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
 * [Groq Playground](https://console.groq.com/playground)
@@ -65,16 +73,72 @@
 
 &nbsp;
 
-## Level 2: Client Server
+## Level 2: Client-Server Model
 <small> <i>
-> Scale up what you have implemented in Level 1 to a client-server model. <br>
-> Create multiple clients that can read input and send this input to a server. <br>
-> Server -> API call -> sends the responses back to all clients along with the original prompt. <br>
-> The clients should now write the response they receive from the server to a .json file. <br>
-> Having done this, create a **bash script** that launches all the clients and the server. <br>
+> * Scale up what you have implemented in Level 1 to a client-server model. <br>
+> * Create multiple clients that can read input and send this input to a server. <br>
+> * Server -> API call -> sends the responses back to all clients along with the original prompt. <br>
+> * The clients should now write the response they receive from the server to a .json file. <br>
+> * Having done this, create a **bash script** that launches all the clients and the server. <br>
 </i> </small>
 
+
+.<br> 
+### <b> <i> Client-Server Protocols </b> </i>
+> **WebSockets**, owing to their simplicity of implementation in Python and full-duplex, <br>
+> bidirectional communication is chosen as the protocol for developing the client-server model.
+
+<details>
+   <summary> <i> HTTP vs SSE vs WebSockets </i> </summary>
+   
+   #### **HTTP (Hypertext Transfer Protocol)**
+   
+   - **Type:** Request-response protocol.
+   - **Communication:** The Client sends a request to the server, and the server responds. Each request is independent.
+   - **Statefulness:** Stateless; each request is separate and does not maintain a persistent connection.
+   - **Use Cases:** Traditional web pages, APIs, and general-purpose data retrieval.
+   - **Advantages:** Simple and well-supported; suitable for most web interactions.
+   - **Limitations:** Not ideal for real-time updates or bidirectional communication.
+   
+   #### **Server-Sent Events (SSE)** 
+   
+   - **Type:** One-way, server-to-client communication.
+   - **Communication:** The server pushes updates to the client over a single long-lived HTTP connection.
+   - **Statefulness:** State is maintained through a single connection, but the protocol is still relatively simple.
+   - **Use Cases:** Real-time updates such as live notifications, feeds, or updates where only server-to-client communication is needed.
+   - **Advantages:** Simple to implement, with built-in support for automatic reconnections and event handling.
+   - **Limitations:** One-way communication (server-to-client only) is unsuitable for bidirectional communication.
+   
+   #### **WebSockets**
+   
+   - **Type:** Full-duplex, bidirectional communication.
+   - **Communication:** Establishes a persistent connection, allowing both the client and server to send messages to each other at any time.
+   - **Statefulness:** State is maintained throughout the WebSocket connection.
+   - **Use Cases:** Real-time applications such as chat applications, live updates, and interactive gaming.
+   - **Advantages:** Low latency, efficient for high-frequency data exchange, and supports two-way communication.
+   - **Limitations:** More complex to implement and manage than HTTP and SSE; requires WebSocket support in both client and server.
+     
+</details>
+
+
+.<br> 
+### <b> <i> Code Explained </b> </i>
+
+
+.<br> 
 ### <b> <i> Theory explored </b> </i>
+<details>
+   <summary> <i> Client and Server </i> </summary>
+   
+   - **Client:** A machine or a program used to make requests through the web.
+     
+   - **Server:** It is a program that listens to clients' requests and responds to them.
+     
+   - **Client Server Model:** Centralized web architecture where the server acts as a central hub that manages and provides resources or services to multiple clients
+     
+   - **Peer-to-Peer Model:** No central server; instead, each node can act as both a client and a server, distributing the responsibilities and reducing centralization.
+   
+</details>
 
 <details>
    <summary> <i> Domain Name System (DNS) </i> </summary>
@@ -114,17 +178,28 @@
 
 <details>
    <summary> <i> Containerization and Kubernetes </i> </summary>
+   
+   1. **Monolith Architecture:**
+      * Monolithic architecture is a traditional software development approach where all the components of an application are tightly coupled and run as a single, unified unit.
+      * In this architecture, the entire application is built and deployed as one large codebase. This means the application's functions, including user interface, business logic, and data access layers, are  
+        contained within a single platform or executable.
 
-   1. **Monolith Architecture:** Monolithic architecture is a traditional software development approach where all the components of an application are tightly coupled and run as a single, unified unit. In this      architecture, the entire application is built and deployed as one large codebase. This means the application's functions, including user interface, business logic, and data access layers, are         
-   contained within a single platform or executable.
-   2. **Microservices:** Microservices architecture is a design approach where an application comprises small, independent services communicating with each other over a network. Each service is 
-   responsible for a specific functionality and can be developed, deployed, and scaled independently. 
-   3. **Containerization:** Containerization is a lightweight form of virtualization that allows you to package an application and its dependencies into a single container. This container can run consistently 
-   across different computing environments, such as development, testing, and production. Containers are isolated from each other and the underlying operating system, making them portable and efficient.
-   4. **Kubernetes:** Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
+   3. **Microservices:**
+      * Microservices architecture is a design approach where an application comprises small, independent services communicating with each other over a network.
+      * Each service is responsible for a specific functionality and can be developed, deployed, and scaled independently.
+
+   5. **Containerization:**
+      * Containerization is a lightweight form of virtualization that allows you to package an application and its dependencies into a single container.
+      * This container can run consistently across different computing environments, such as development, testing, and production. Containers are isolated from each other and the underlying operating system, 
+        making them portable and efficient.
+
+   7. **Kubernetes:**
+      * Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
   
 </details>
 
+
+.<br> 
 ### <b> <i> References for this section </i> </b>
 * [Client-Server Model 1](https://www.geeksforgeeks.org/client-server-model/)
 * [Client-Server Model 2](https://youtu.be/L5BlpPU_muY)
