@@ -84,8 +84,9 @@
 
 .<br> 
 ### <b> <i> Client-Server Protocols </b> </i>
-> **WebSockets**, owing to their simplicity of implementation in Python and full-duplex, <br>
-> bidirectional communication is chosen as the protocol for developing the client-server model.
+> * **WebSockets**, owing to their simplicity of implementation in Python and full-duplex, <br>
+>   bidirectional communication is chosen as the protocol for developing the client-server model.
+> * **Socket.io** library used.   
 
 <details>
    <summary> <i> HTTP vs SSE vs WebSockets </i> </summary>
