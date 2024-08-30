@@ -250,11 +250,11 @@
 
 .<br> 
 ### <b> <i> References for this section </i> </b>
+* [Domain Name System (DNS)](https://www.geeksforgeeks.org/domain-name-system-dns-in-application-layer/)
 * [Client-Server Model 1](https://www.geeksforgeeks.org/client-server-model/)
 * [Client-Server Model 2](https://youtu.be/L5BlpPU_muY)
-* [Domain Name System (DNS)](https://www.geeksforgeeks.org/domain-name-system-dns-in-application-layer/)
 * [Web Sockets](https://www.youtube.com/watch?v=favi7avxIag)<br>
-* [Python Web Sockets Coded](https://www.youtube.com/watch?v=3QiPPX-KeSc&t=114s)
+* [Socket.io](https://www.youtube.com/watch?v=3QiPPX-KeSc&t=114s)
 
 
 
