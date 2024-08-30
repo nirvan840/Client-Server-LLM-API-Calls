@@ -67,10 +67,10 @@
 
 .<br> 
 ### <b> <i> References for this section </b> </i>
-* [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
-* [Groq Playground](https://console.groq.com/playground)
-* [Groq Documentation](https://console.groq.com/docs/quickstart)
 * [Getting Started with Groq API](https://www.youtube.com/watch?v=S53BanCP14c)
+* [Groq Documentation](https://console.groq.com/docs/quickstart)
+* [Groq Playground](https://console.groq.com/playground)
+* [JSON Output](https://github.com/groq/groq-api-cookbook/blob/main/tutorials/json-mode-social-determinants-of-health/SDOH-Json-mode.ipynb)
 
 
 &nbsp;
