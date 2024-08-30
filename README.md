@@ -127,6 +127,15 @@
 
 .<br> 
 ### <b> <i> Theory explored </b> </i>
+
+<details>
+   <summary> <i> Batch File </i> </summary>
+   
+   - **Batch Files:** 
+
+ &nbsp;
+</details>
+
 <details>
    <summary> <i> Client and Server </i> </summary>
    
@@ -137,65 +146,77 @@
    - **Client Server Model:** Centralized web architecture where the server acts as a central hub that manages and provides resources or services to multiple clients
      
    - **Peer-to-Peer Model:** No central server; instead, each node can act as both a client and a server, distributing the responsibilities and reducing centralization.
+
+&nbsp;
+</details>
+
+<details>
+   <summary> <i> Port VS IP Address </i> </summary>
+
+   ### IP Address
+   - **What it is**: An IP address is a unique identifier assigned to a device on a network. It enables devices to locate and communicate with each other over the Internet or a local network.
+   - **Types**: There are two main types of IP addresses:
+     - **IPv4**: A 32-bit address written as four decimal numbers separated by periods (e.g., 192.168.1.1).
+     - **IPv6**: A 128-bit address, written as eight groups of four hexadecimal digits separated by colons (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334).
+   - **Function**: The IP address serves as the "address" of a device on the network, much like a street address for a house.
+
    
+   ### Port
+   - **What it is**: A port is a numerical value (ranging from 0 to 65535) used to identify a specific process or service running on a device. It allows multiple services to run on a single IP address 
+                     simultaneously.
+   - **Types**:
+     - **Well-known ports**: Ports 0 to 1023 are reserved for systems or well-known services (e.g., HTTP uses port 80, HTTPS uses port 443).
+     - **Registered ports**: Ports 1024 to 49151 are used by user-registered services.
+     - **Dynamic or private ports**: Ports 49152 to 65535 are used by applications for temporary communication.
+   - **Function**: The port number, along with the IP address, directs traffic to the appropriate application or service on a device. For example, when you visit a website, your browser uses port 80 (HTTP) or 
+     443 (HTTPS) to connect to the web server's IP address.
+
+   
+   ### How They Work Together
+   - When you access a service on a network, your device sends data to an IP address at a specific port number. The IP address ensures the data reaches the correct device, and the port ensures it reaches the 
+     correct application or service on that device. 
+   
+   For example, when you type `http://example.com` in your browser:
+   - Your request has been sent to the IP address `example.com`.
+   - The request uses port 80 (the default for HTTP).
+   - The web server at that IP address receives the request on port 80 and responds with the webpage.
+   - **Endpoint:**
+      - An endpoint combines an IP address and a port number. It specifies a particular service on a host machine.
+      - Example: 192.168.1.1:8080 is an endpoint where 192.168.1.1 is the IP address, and 8080 is the port number. Together, they point to a specific service running on the host machine at that address.
+
+&nbsp;
 </details>
 
 <details>
    <summary> <i> Domain Name System (DNS) </i> </summary>
    
-   1. **Problem with IP Addresses:**
-      - Every device connected to the internet is identified by a unique IP address, which is a numerical label like `192.168.1.1` for IPv4 or a more complex string like `2001:0db8:85a3:0000:0000:8a2e:0370:7334` 
-        for IPv6.
-      - However, remembering these numbers is not practical for most people. Imagine trying to remember the IP address for every website you visit!
+   ### **Problem with IP Addresses:**
+   - Every device connected to the internet is identified by a unique IP address, which is a numerical label like `192.168.1.1` for IPv4 or a more complex string like `2001:0db8:85a3:0000:0000:8a2e:0370:7334` 
+     for IPv6.
+   - However, remembering these numbers is not practical for most people. Imagine trying to remember the IP address for every website you visit!
    
-   2. **Domain Names:**
-      - To make things easier, domain names were introduced. Domain names are human-readable addresses like `www.google.com`, which are easier to remember and use.
-      - Domain names are hierarchical and usually consist of a top-level domain (TLD) like `.com`, `.org`, or `.edu`, followed by a second-level domain (like `google` in `google.com`).
+   ### **Domain Names:**
+   - To make things easier, domain names were introduced. Domain names are human-readable addresses like `www.google.com`, which are easier to remember and use.
+   - Domain names are hierarchical and usually consist of a top-level domain (TLD) like `.com`, `.org`, or `.edu`, followed by a second-level domain (like `google` in `google.com`).
    
-   3. **DNS as a Solution:**
-      - The Domain Name System (DNS) acts as a translator or a phonebook for the internet.
-      - When you type a domain name into your web browser, your computer requests a DNS server to find the IP address associated with that domain name.
+   ### **DNS as a Solution:**
+   - The Domain Name System (DNS) acts as a translator or a phonebook for the internet.
+   - When you type a domain name into your web browser, your computer requests a DNS server to find the IP address associated with that domain name.
    
-   4. **How DNS Works:**
-      - **DNS Query:** When you enter a domain name (e.g., `www.example.com`), your computer first checks its local DNS cache to see if it already knows the IP address. If not, it sends a DNS query to a DNS 
-         resolver (usually provided by your ISP).
-      - **DNS Resolver:** The resolver checks its cache. If it doesn't find the answer, it starts hierarchically querying other DNS servers, starting from the root DNS servers.
-      - **Root, TLD, and Authoritative DNS Servers:**
-        - **Root Servers:** Direct the resolver to the appropriate top-level domain (TLD) server.
-        - **TLD Servers:** These direct the resolver to the authoritative DNS server for the specific domain (e.g., `example.com`).
-        - **Authoritative DNS Server:** This server provides the actual IP address associated with the domain name.
-      - **IP Address Returned:** Once the IP address is found, it's sent back to your computer, and your browser can then connect to the website using that IP address.
+   ### **How DNS Works:**
+   - **DNS Query:** When you enter a domain name (e.g., `www.example.com`), your computer first checks its local DNS cache to see if it already knows the IP address. If not, it sends a DNS query to a DNS 
+      resolver (usually provided by your ISP).
+   - **DNS Resolver:** The resolver checks its cache. If it doesn't find the answer, it starts hierarchically querying other DNS servers, starting from the root DNS servers.
+   - **Root, TLD, and Authoritative DNS Servers:**
+     - **Root Servers:** Direct the resolver to the appropriate top-level domain (TLD) server.
+     - **TLD Servers:** These direct the resolver to the authoritative DNS server for the specific domain (e.g., `example.com`).
+     - **Authoritative DNS Server:** This server provides the actual IP address associated with the domain name.
+   - **IP Address Returned:** Once the IP address is found, it's sent back to your computer, and your browser can then connect to the website using that IP address.
    
-   5. **Dynamic IP Addresses:**
-      - IP addresses can change, especially with dynamic IPs used by most ISPs. The DNS system is designed to handle this by allowing domain owners to update their DNS records with new IP addresses, ensuring 
-        that users can still reach their websites.
+   ### **Dynamic IP Addresses:**
+   - IP addresses can change, especially with dynamic IPs used by most ISPs. The DNS system is designed to handle this by allowing domain owners to update their DNS records with new IP addresses, ensuring 
+     that users can still reach their websites.
    
-   6. **Why DNS is Important:**
-      - DNS makes the internet user-friendly by allowing us to use easy-to-remember domain names instead of complex IP addresses.
-      - It also provides a level of abstraction, allowing websites to change servers or IP addresses without affecting the end-user experience.
-   
-</details>
-
-<details>
-   <summary> <i> Containerization and Kubernetes </i> </summary>
-   
-   1. **Monolith Architecture:**
-      * Monolithic architecture is a traditional software development approach where all the components of an application are tightly coupled and run as a single, unified unit.
-      * In this architecture, the entire application is built and deployed as one large codebase. This means the application's functions, including user interface, business logic, and data access layers, are  
-        contained within a single platform or executable.
-
-   3. **Microservices:**
-      * Microservices architecture is a design approach where an application comprises small, independent services communicating with each other over a network.
-      * Each service is responsible for a specific functionality and can be developed, deployed, and scaled independently.
-
-   5. **Containerization:**
-      * Containerization is a lightweight form of virtualization that allows you to package an application and its dependencies into a single container.
-      * This container can run consistently across different computing environments, such as development, testing, and production. Containers are isolated from each other and the underlying operating system, 
-        making them portable and efficient.
-
-   7. **Kubernetes:**
-      * Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
-  
 </details>
 
 
@@ -214,9 +235,41 @@ And,
 * [Kubernetes](https://www.youtube.com/watch?v=VnvRFRk_51k)
 
 
-&nbsp;
 
+&nbsp;
 ## Level 3: Dockerization
+
+.<br> 
+### <b> <i> Code Explained </b> </i>
+
+.<br> 
+### <b> <i> Theory explored </b> </i>
+
+<details>
+   <summary> <i> Containerization and Kubernetes </i> </summary>
+   
+   ### **Monolith Architecture:**
+   * Monolithic architecture is a traditional software development approach where all the components of an application are tightly coupled and run as a single, unified unit.
+   * In this architecture, the entire application is built and deployed as one large codebase. This means the application's functions, including user interface, business logic, and data access layers, are  
+     contained within a single platform or executable.
+
+   ### **Microservices:**
+   * Microservices architecture is a design approach where an application comprises small, independent services communicating with each other over a network.
+   * Each service is responsible for a specific functionality and can be developed, deployed, and scaled independently.
+
+   ### **Containerization:**
+   * Containerization is a lightweight form of virtualization that allows you to package an application and its dependencies into a single container.
+   * This container can run consistently across different computing environments, such as development, testing, and production. Containers are isolated from each other and the underlying operating system, 
+     making them portable and efficient.
+
+   ### **Kubernetes:**
+   * Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
+  
+</details>
+
+.<br> 
+### <b> <i> References for this section </i> </b>
+
 
 
 &nbsp;
