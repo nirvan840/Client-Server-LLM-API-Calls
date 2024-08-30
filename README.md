@@ -41,11 +41,12 @@
 <details>
    <summary> <i> LLM Parameters </i> </summary>
    
-   ##### Why Use top_p?
+   #### Why Use top_p?
    * **Diversity in Output**: By adjusting top_p, you can control the diversity of the generated text.
    * Lower top_p values make the output more focused and repetitive, while higher values increase <br>
      diversity but may introduce more randomness.
-   ##### Temperature
+     
+   ### Temperature
    * [What is Temp Doing?](https://www.youtube.com/watch?v=YjVuJjmgclU)
      * Small Temp (say 0.5) -> initial logits: [2,1,0.5] -> logits/Temp = [4,2,1] => Clearly the bigger <br>
        probability got bigger by more margin.
@@ -53,10 +54,12 @@
    * The temperature parameter in large language models (LLMs) is a key hyperparameter that controls <br> the
      randomness or creativity of the model's outputs during text generation**. It affects how the model <br> samples
      from the probability distribution of possible next tokens.
-   ##### Temp VS top_p
-   * Temp -> Increases random sampling ( more Temp = less random )
-   * top_p -> Restricts choices of model ( more top_p = more choices for sampling )
-   ##### Stop token
+     
+   ### Temp VS top_p
+   * Temp -> Increases random sampling (more Temp = less random)
+   * top_p -> Restricts choices of model (more top_p = more choices for sampling)
+   * 
+   ### Stop token
    * stop = stop token corresponding to halting text generation
      
 </details>
@@ -123,16 +126,43 @@
 
 .<br> 
 ### <b> <i> Code Explained </b> </i>
+> Creating a server-client model in Python using socket.io <br>
+> Python code present in Level1+2 Code folder <br>
+> Input and output files to show working in Level1+2 Input & Output folder
 
+* `server.py`: _Python class to create a server to handle API calls._
+  * The server is created at the IP address of the local machine.
+  * Can handle multiple clients by utilizing multi-threading.
+  * Functionality to accept and send strings to and from any client.
+   and,
+  * Accepts prompt (string) from a client -> Makes an API call to the LLM using `APIcall` object <br>
+    -> receives LLM response in JSON format -> Adds a "_SERVER" authentication tag to the LLM response <br>
+    -> encodes LLM response and sends it to the client as requested, along with a unique client ID.
+    
+* `client.py`: _Python class to create clients that send and receive data to/from the server._
+  * Each client is connected to the above-created server.
+  * Encodes a prompt (string) and sends it to the server -> ... server ... -> Receives LLM response (string) and decodes it <br>
+    -> authenticates if the prompt-response pair sent by the server -> converts LLM response to .json dict. and stores it in output_ID.json.
 
+ * `main.py`: _Python script to run codes for Level1 and Level2_
+   * **Level1:** Reads input from intput1.txt and stores .json response dict in output1.txt.
+   * **Level2:** Reads input from input2.txt -> Each line in input2.txt is sent as a prompt to a unique client -> Each client <br>
+   stores .json response dict in `output_<CLIENT_ID>.json` e.g. `output_53525.json`.
+ 
 .<br> 
 ### <b> <i> Theory explored </b> </i>
 
 <details>
    <summary> <i> Batch File </i> </summary>
    
-   - **Batch Files:** 
+   ### Batch Files
+   - Simple, text-based scripts are used mainly to automate tasks within the Windows environment. They are easy to create and modify but limited in functionality and performance.
+   - They are interpreted line by line by the command-line interpreter (e.g., cmd.exe on Windows).
 
+   ### .EXE Files
+   - .exe files can be used to create full-featured applications with graphical interfaces, complex logic, and interactions with the operating system.
+   - They can be run directly by the operating system without an interpreter.
+   
  &nbsp;
 </details>
 
@@ -222,14 +252,6 @@
 
 .<br> 
 ### <b> <i> References for this section </i> </b>
-* [Client-Server Model 1](https://www.geeksforgeeks.org/client-server-model/)
-* [Client-Server Model 2](https://youtu.be/L5BlpPU_muY)
-* [Domain Name System (DNS)](https://www.geeksforgeeks.org/domain-name-system-dns-in-application-layer/)
-* [Web Sockets](https://www.youtube.com/watch?v=favi7avxIag)<br>
-* [Python Web Sockets Coded](https://www.youtube.com/watch?v=3QiPPX-KeSc&t=114s)
-
-And,
-  
 * [Monolithic Arch. & Microservices](https://www.youtube.com/watch?v=7IFJb-uLEaI)
 * [Containerization](https://www.youtube.com/watch?v=0qotVMX-J5s)
 * [Kubernetes](https://www.youtube.com/watch?v=VnvRFRk_51k)
@@ -267,8 +289,18 @@ And,
   
 </details>
 
+<details>
+   <summary> <i> Docker </i> </summary>
+
+   
+</details>
+
+
 .<br> 
 ### <b> <i> References for this section </i> </b>
+* [Monolithic Arch. & Microservices](https://www.youtube.com/watch?v=7IFJb-uLEaI)
+* [Containerization](https://www.youtube.com/watch?v=0qotVMX-J5s)
+* [Kubernetes](https://www.youtube.com/watch?v=VnvRFRk_51k)
 
 
 
