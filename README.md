@@ -1,5 +1,5 @@
 # DaSHLab Assignment 2024 
-> ### [Home DaSH Lab](https://arnabkrpaul.github.io/Dashlab/index.html) | [Assignment 2024](https://docs.google.com/document/d/1oK0p87q-WvWZB3XpIarPaVZF3DQUhFqfxLy2yW__mEg/pub?urp=gmail_link#h.39v2ctm6mmq)
+> ### [_Home DaSH Lab_](https://arnabkrpaul.github.io/Dashlab/index.html) | [_Assignment 2024_](https://docs.google.com/document/d/1oK0p87q-WvWZB3XpIarPaVZF3DQUhFqfxLy2yW__mEg/pub?urp=gmail_link#h.39v2ctm6mmq)
 > ### _Segment Anything Model (SAM)_
 > ### _Nirvan Patil (2022AAPS1250G)_
 &nbsp;
