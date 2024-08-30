@@ -263,12 +263,14 @@
 
 &nbsp;
 ## Level 3: Dockerization
+> Dockerize the system created in level 2. <br>
+> Make separate images for servers and clients. Use a docker-compose file to start the server and clients.
 
 .<br> 
 ### <b> <i> Code Explained </b> </i>
-> * Code to create a docker image for the server and client-side code
-> * Docker-compose to run server and client containers
-> * Shared volume space for output.json
+> Code to create a docker image for the server and client-side code
+> Docker-compose to run server and client containers
+> Shared volume space for output.json
 
 * `server_v2.py`: _Small tweaks to `server.py`._
   * Server IP is set to `self.SERVER = 0.0.0.0`
@@ -285,7 +287,7 @@
   * Crucially defines a SERVER_ADDRESS environment variable
     * By setting SERVER_ADDRESS to the `server`, you’re instructing the client to use the <br>
       Docker network’s DNS to resolve the hostname server to the IP address of the server container.
-  * Creates a shared volume and maps it to client container's data-space as `/data`
+  * Creates a shared volume and maps it to the client container's data space as `/data`
 
 * `client_v2.py`: _Small tweaks to `server.py`._
   * Client connects to IP set to `self.SERVER = "server"`
