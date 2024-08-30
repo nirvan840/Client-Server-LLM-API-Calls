@@ -8,16 +8,16 @@
 
 ## Level 1: API Calls
 <small> <i>
-> * Make a script that makes API calls to an LLM API (like Gemma, Groq). <br>
-> * The script should take input from a text file and save the received responses in a .json file.
+> * Make a script that makes API calls to an **LLM API** (like Gemma, Groq). <br>
+> * The script should take **input from a text file** and save the received responses in a **.json file.**
 </i> </small>
 
 
 .<br> 
 ### <b> <i> Choice of LLM API: **Groq** </b> </i>
-* Extensive, easy-to-read documentation when compared to Gemma.
-* Support of multiple models and agent calling.
-* Faster output speeds and low latency.
+* Extensive, **easy-to-read documentation** when compared to Gemma.
+* Allows you to project data into custom shapes.
+* **Faster output speeds** and low latency.
 
 
 .<br>  
@@ -77,10 +77,10 @@
 
 ## Level 2: Client-Server Model
 <small> <i>
-> * Scale up what you have implemented in Level 1 to a client-server model. <br>
-> * Create multiple clients that can read input and send this input to a server. <br>
+> * Scale up what you have implemented in Level 1 to a **client-server model**. <br>
+> * Create **multiple clients** that can read input and send this input to a server. <br>
 > * Server -> API call -> sends the responses back to all clients along with the original prompt. <br>
-> * The clients should now write the response they receive from the server to a .json file. <br>
+> * The clients should now write the response they receive from the server to a **.json file**. <br>
 > * Having done this, create a **batch script** that launches all clients and servers. <br>
 </i> </small>
 
@@ -130,8 +130,8 @@
 > Input and output files to show working in Level1+2 Input & Output folder
 
 * `server.py`: _Python class to create a server to handle API calls._
-  * Server is created at the IP address of the local machine.
-  * Can handle multiple clients by utilizing multi-threading.
+  * Server is created at the **IP address of the local machine**.
+  * Can handle **multiple clients** by utilizing multi-threading.
   * Accepts prompt (string) from a client -> Makes an API call to the LLM using `APIcall` object <br>
     -> receives LLM response in JSON format -> Adds a "_SERVER" authentication tag to the LLM response <br>
     -> encodes LLM response and sends it to the client as requested, along with a unique client ID.
@@ -148,7 +148,7 @@
    stores .json response dict in `output_<CLIENT_ID>.json` e.g. `output_53525.json`.
 
  * `Level2.bat`: _Batch file to automate Level2 Task_
-   * Automates the entire Level2 process from reading input to making output.json files.
+   * **Automates** the entire Level2 process from reading input to making output.json files.
  
 .<br> 
 ### <b> <i> Theory explored </b> </i>
@@ -263,8 +263,9 @@
 
 &nbsp;
 ## Level 3: Dockerization
-> Dockerize the system created in level 2. <br>
-> Make separate images for servers and clients. Use a docker-compose file to start the server and clients.
+> **Dockerize** the system created in level 2. <br>
+> Make **separate** images for servers and clients. <br>
+> Use a **docker-compose** file to start the server and clients.
 
 .<br> 
 ### <b> <i> Code Explained </b> </i>
@@ -274,20 +275,20 @@
 
 * `server_v2.py`: _Small tweaks to `server.py`._
   * Server IP is set to `self.SERVER = 0.0.0.0`
-    * A special IP address, the server will accept connections from any IP address, not just a specific one.
+    * A **special IP address**, the server will accept **connections from any IP address**, not just a specific one.
     * self.SERVER = "127.0.0.1", the server will only accept connections coming from that IP address.
 
 * `Dockerfile`: _Code for Docker Image_
-  * Used to create a docker image with required dependencies, specified in requirements.txt
+  * Used to create a **docker image** with required dependencies, specified in requirements.txt
   * Working directory for containers /app
-  * Exposed Port for containers- 80
+  * **Exposed Port** for containers- 80
 
 * `docker-compose.yml`: _Facilitating multiple container communication_
-  * Maps host port 5050 to the server container's exposed port 80.
-  * Crucially defines a SERVER_ADDRESS environment variable
-    * By setting SERVER_ADDRESS to the `server`, you’re instructing the client to use the <br>
+  * Maps `host port 5050` to the server container's `exposed port 80`.
+  * Crucially defines a SERVER_ADDRESS environment variable.
+    * By setting **SERVER_ADDRESS** to the `server`, you’re instructing the client to use the <br>
       Docker network’s DNS to resolve the hostname server to the IP address of the server container.
-  * Creates a shared volume and maps it to the client container's data space as `/data`
+  * Creates a shared volume and maps it to the client container's data space as `/data`.
 
 * `client_v2.py`: _Small tweaks to `server.py`._
   * Client connects to IP set to `self.SERVER = "server"`
@@ -327,8 +328,8 @@
    
    ### Key components
    * Containers: Lightweight, isolated environments for running applications.
-   * Images: Read-only templates used to create containers, built from Dockerfile.
-   * Docker Engine: The core component that manages containers.
+   * Images: Read-only **templates** used to create containers, built from Dockerfile.
+   * Docker Engine: The core component that **manages containers**.
    * Docker Compose A tool for defining and running multi-container applications using a docker-compose.yml file.
    * Docker Hub: A cloud registry for sharing and storing Docker images.
    
@@ -338,8 +339,8 @@
 .<br> 
 ### <b> <i> References for this section </i> </b>
 * [Monolithic Arch. & Microservices](https://www.youtube.com/watch?v=7IFJb-uLEaI)
-* [Docker - 1hr full {TO DO}](https://www.youtube.com/watch?v=fqMOX6JJhGo&t=155s&pp=ygULZG9ja2VyIG1vc2g%3D)
 * [Docker Compose {TO DO}](https://www.youtube.com/watch?v=HG6yIjZapSA&pp=ygULZG9ja2VyIG1vc2g%3D)
+* [Docker - 1hr full {TO DO}](https://www.youtube.com/watch?v=fqMOX6JJhGo&t=155s&pp=ygULZG9ja2VyIG1vc2g%3D)
 * [Docker - ApnaCollege](https://www.youtube.com/watch?v=H8Lyj2D_cWo)
 * [Docker - Fireship](https://www.youtube.com/watch?v=gAkwW2tuIqE)
 * [Containerization](https://www.youtube.com/watch?v=0qotVMX-J5s)
