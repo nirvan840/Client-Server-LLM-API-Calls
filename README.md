@@ -126,15 +126,12 @@
 
 .<br> 
 ### <b> <i> Code Explained </b> </i>
-> Creating a server-client model in Python using socket.io <br>
 > Python code present in Level1+2 Code folder <br>
 > Input and output files to show working in Level1+2 Input & Output folder
 
 * `server.py`: _Python class to create a server to handle API calls._
-  * The server is created at the IP address of the local machine.
+  * Server is created at the IP address of the local machine.
   * Can handle multiple clients by utilizing multi-threading.
-  * Functionality to accept and send strings to and from any client.
-   and,
   * Accepts prompt (string) from a client -> Makes an API call to the LLM using `APIcall` object <br>
     -> receives LLM response in JSON format -> Adds a "_SERVER" authentication tag to the LLM response <br>
     -> encodes LLM response and sends it to the client as requested, along with a unique client ID.
@@ -142,11 +139,12 @@
 * `client.py`: _Python class to create clients that send and receive data to/from the server._
   * Each client is connected to the above-created server.
   * Encodes a prompt (string) and sends it to the server -> ... server ... -> Receives LLM response (string) and decodes it <br>
-    -> authenticates if the prompt-response pair sent by the server -> converts LLM response to .json dict. and stores it in output_ID.json.
+    -> authenticates if the prompt-response pair sent by the server -> converts LLM response to .json dict. and stores it in <br>
+    output_ID.json.
 
  * `main.py`: _Python script to run codes for Level1 and Level2_
-   * **Level1:** Reads input from intput1.txt and stores .json response dict in output1.txt.
-   * **Level2:** Reads input from input2.txt -> Each line in input2.txt is sent as a prompt to a unique client -> Each client <br>
+   * **Level 1:** Reads input from intput1.txt and stores .json response dict in output1.txt.
+   * **Level 2:** Reads input from input2.txt -> Each line in input2.txt is sent as a prompt to a unique client -> Each client <br>
    stores .json response dict in `output_<CLIENT_ID>.json` e.g. `output_53525.json`.
  
 .<br> 
