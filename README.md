@@ -350,7 +350,7 @@
 
 &nbsp;
 # Transformers, ViT & SAM 
-* Research summary present in respective .md files in the `Research Folder`
-* Includes learnings, references, new techniques, etc..
+* Research summary present in respective .md files in the `Research` Folder.
+* Summarization of my understanding of the papers.
 
 
