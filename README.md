@@ -81,7 +81,7 @@
 > * Create multiple clients that can read input and send this input to a server. <br>
 > * Server -> API call -> sends the responses back to all clients along with the original prompt. <br>
 > * The clients should now write the response they receive from the server to a .json file. <br>
-> * Having done this, create a **bash script** that launches all the clients and the server. <br>
+> * Having done this, create a **batch script** that launches all clients and servers. <br>
 </i> </small>
 
 
@@ -146,6 +146,9 @@
    * **Level 1:** Reads input from intput1.txt and stores .json response dict in output1.txt.
    * **Level 2:** Reads input from input2.txt -> Each line in input2.txt is sent as a prompt to a unique client -> Each client <br>
    stores .json response dict in `output_<CLIENT_ID>.json` e.g. `output_53525.json`.
+
+ * `Level2.bat`: _Batch file to automate Level2 Task_
+   * Automates the entire Level2 process from reading input to making output.json files.
  
 .<br> 
 ### <b> <i> Theory explored </b> </i>
@@ -154,7 +157,7 @@
    <summary> <i> Batch File </i> </summary>
    
    ### Batch Files
-   - Simple, text-based scripts are used mainly to automate tasks within the Windows environment. They are easy to create and modify but limited in functionality and performance.
+   - Simple, text-based scripts are mainly used to automate Windows environment tasks. They are easy to create and modify but limited in functionality and performance.
    - They are interpreted line by line by the command-line interpreter (e.g., cmd.exe on Windows).
 
    ### .EXE Files
@@ -263,6 +266,30 @@
 
 .<br> 
 ### <b> <i> Code Explained </b> </i>
+> * Code to create a docker image for the server and client-side code
+> * Docker-compose to run server and client containers
+> * Shared volume space for output.json
+
+* `server_v2.py`: _Small tweaks to `server.py`._
+  * Server IP is set to `self.SERVER = 0.0.0.0`
+    * A special IP address, the server will accept connections from any IP address, not just a specific one.
+    * self.SERVER = "127.0.0.1", the server will only accept connections coming from that IP address.
+
+* `Dockerfile`: _Code for Docker Image_
+  * Used to create a docker image with required dependencies, specified in requirements.txt
+  * Working directory for containers /app
+  * Exposed Port for containers- 80
+
+* `docker-compose.yml`: _Facilitating multiple container communication_
+  * Maps host port 5050 to the server container's exposed port 80.
+  * Crucially defines a SERVER_ADDRESS environment variable
+    * By setting SERVER_ADDRESS to the `server`, you’re instructing the client to use the <br>
+      Docker network’s DNS to resolve the hostname server to the IP address of the server container.
+  * Creates a shared volume and maps it to client container's data-space as `/data`
+
+* `client_v2.py`: _Small tweaks to `server.py`._
+  * Client connects to IP set to `self.SERVER = "server"`
+  * Output files of the client are stored at `/data/`
 
 .<br> 
 ### <b> <i> Theory explored </b> </i>
@@ -285,13 +312,23 @@
      making them portable and efficient.
 
    ### **Kubernetes:**
-   * Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
+   * Kubernetes is an open-source container orchestration platform designed to automate containerized applications' deployment, scaling, and management.
   
 </details>
 
 <details>
    <summary> <i> Docker </i> </summary>
-
+ 
+   ### Docker
+   * Docker simplifies creating, managing, and deploying these containers, making it easier to <br>
+   * develop, test, and deploy applications in a consistent and portable manner.
+   
+   ### Key components
+   * Containers: Lightweight, isolated environments for running applications.
+   * Images: Read-only templates used to create containers, built from Dockerfile.
+   * Docker Engine: The core component that manages containers.
+   * Docker Compose A tool for defining and running multi-container applications using a docker-compose.yml file.
+   * Docker Hub: A cloud registry for sharing and storing Docker images.
    
 </details>
 
@@ -299,6 +336,10 @@
 .<br> 
 ### <b> <i> References for this section </i> </b>
 * [Monolithic Arch. & Microservices](https://www.youtube.com/watch?v=7IFJb-uLEaI)
+* [Docker - 1hr full {TO DO}](https://www.youtube.com/watch?v=fqMOX6JJhGo&t=155s&pp=ygULZG9ja2VyIG1vc2g%3D)
+* [Docker Compose {TO DO}](https://www.youtube.com/watch?v=HG6yIjZapSA&pp=ygULZG9ja2VyIG1vc2g%3D)
+* [Docker - ApnaCollege](https://www.youtube.com/watch?v=H8Lyj2D_cWo)
+* [Docker - Fireship](https://www.youtube.com/watch?v=gAkwW2tuIqE)
 * [Containerization](https://www.youtube.com/watch?v=0qotVMX-J5s)
 * [Kubernetes](https://www.youtube.com/watch?v=VnvRFRk_51k)
 
