@@ -334,9 +334,9 @@
    
    ### Key components
    * Containers: Lightweight, isolated environments for running applications.
-   * Images: Read-only **templates** used to create containers, built from Dockerfile.
+   * Images: Read-only **templates** are used to create containers built from Dockerfile.
    * Docker Engine: The core component that **manages containers**.
-   * Docker Compose A tool for defining and running multi-container applications using a docker-compose.yml file.
+   * Docker Compose: A tool for defining and running multi-container applications using a docker-compose.yml file.
    * Docker Hub: A cloud registry for sharing and storing Docker images.
    
 </details>
@@ -356,7 +356,8 @@
 
 &nbsp;
 # Transformers, ViT & SAM 
-* Research summary present in respective .md files in the `Research` Folder.
-* Summarization of my understanding of the papers.
+
+#### [Transformers](https://arxiv.org/abs/1706.03762), [ViT](https://arxiv.org/abs/2010.11929), [Segment Anything Model](https://arxiv.org/abs/2304.02643) - _One read through complete_
+#### Research summary in respective .md files in the `Research` Folder - _Work in Progress_
 
 
