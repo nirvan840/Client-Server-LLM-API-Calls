@@ -81,7 +81,7 @@
 > * Create **multiple clients** that can read input and send this input to a server. <br>
 > * Server -> API call -> sends the responses back to all clients along with the original prompt. <br>
 > * The clients should now write the response they receive from the server to a **.json file**. <br>
-> * Having done this, create a **batch script** that launches all clients and servers. <br>
+> * Having done this, create a **bash script** that launches all clients and servers. <br>
 </i> </small>
 
 
@@ -149,12 +149,18 @@
 
  * `Level2.bat`: _Batch file to automate Level2 Task_
    * **Automates** the entire Level2 process from reading input to making output.json files.
+   * **Batch** file used as bash file caused client-server connection to fail.
  
 .<br> 
 ### <b> <i> Theory explored </b> </i>
 
 <details>
-   <summary> <i> Batch File </i> </summary>
+   <summary> <i> Bash Script, Batch File </i> </summary>
+
+   ### Bash Script
+   - More powerful than Batch Files.
+   - Primarily used on Unix-like systems (Linux, macOS).
+   - Can be used on Windows via tools like Git Bash, WSL (Windows Subsystem for Linux), or Cygwin.
    
    ### Batch Files
    - Simple, text-based scripts are mainly used to automate Windows environment tasks. They are easy to create and modify but limited in functionality and performance.
