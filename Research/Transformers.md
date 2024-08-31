@@ -13,7 +13,43 @@ large and limited training data.
 .<br>
 ## Learnings
 
-### _1. Key, Query & Value Matricies_
+### _1. Word Embeddings_
+<details>
+  <summary><i> Details </i></summary>
+
+  #### WHY EMBEDDINGS ?
+  * Neural Network understand vectors and not the words we speak.
+  * We need a way to convert words to vectors.
+
+  #### PROCESS FOR EMBEDDING
+  > <img src ="https://github.com/user-attachments/assets/a7e1893b-b3d9-4f8c-b171-b78e4a0095f6" alt="Word Embeddings" width="380" height="320"> <br>
+
+  * We make use of a MLP: 
+    * One-hot like Input given to MLP. Varies from technique to technique. 
+    * Number of Input neurons = Total number of tokens in the model's "vocabulary".
+    * Hidden layer(s) with activations followed by an output layer.
+    * Output vector = Embedding of corresponding token. 
+  * The "Embedding Space" is a very high dimensional space where similarity between <br>
+    various words and their relations are stored.
+</details>
+
+### _2. Positional Encoding_
+<details>
+  <summary><i> Details </i></summary>
+  
+  #### WHY POSITIONAL ENCODING ?
+  * Order of words in a sentence carry semantic value.
+  * Before passing an input to a transformer, it is important along with the Word Embeddings <br>
+    we lay importance on the position of words in a sentence throught Positional Embeddings.
+
+ #### PROCESS FOR ENCODING
+ > <img src="https://github.com/user-attachments/assets/31cd6a4b-937d-4d50-81dd-c1790c0d70b0" alt="Positional Encoding" width="380" height="320"> <br>
+ * Among various positional values, some components might have same value, however, the value vector as a whole remains unique.
+ * The value vector is added to the Word Embedding to get Positional Encoding of the token.
+
+</details>
+
+### _3. Key, Query & Value Matricies_
 <details>
   <summary><i> Details </i> </summary>
 
@@ -53,12 +89,11 @@ large and limited training data.
   * For each token, (Q.K^T)*V allows us to determine the value of each Key-Query pair/similarity. This can be thought of as a "global" similarity.
   * As depicted in the figure above, we can sum along each column to determine how each token's embedding should be updated.
   * This allows for information flow between tokens and allows the computer to "learn" the sentence's meaning. 
-
 </details>
 
-### _2. Self, Cross & Multi-Headed Attention_
+### _4. Self, Cross & Multi-Headed Attention_
 <details>
-  <summary> <i>Details</i>i> </summary>
+  <summary><i> Details </i></summary>
 
   #### SELF VS CROSS ATTENTION
   * The above process refers to self-attention; Key and Query Matrices act on the same data.
@@ -69,7 +104,23 @@ large and limited training data.
   > <img src = "https://github.com/user-attachments/assets/76e1ab7a-4a1e-4939-947c-20a926d2a854" alt="Multi Headed Result" width="420" height="300"> <br>
   * Multiple distinct Key, Query, and Value Matrices to allow various interpretations/attention patterns. <br>
   * The second figure shows how each embedding is updated after a multi-headed operation.
+</details>
 
+### _5. ATTENTION BLOCK AND MLP BLOCK_
+<details>
+  <summary><i> Details </i></summary>
+
+  #### ATTENTION BLOCK
+  * 1st Attention Block takes original positional encodings of the sentence(s) as input. It outputs updated encodings <br>
+  for each token in the sentence(s) allowing for information and context flow. 
+  * 2nd Attention Block takes these updated encodings as their input and the process repeats... <br>
+  _Finally_,
+  * Generally the goal is that the last embedding in the output of the last Attention block, encodes the entire context and <br>
+  acts as a probability distribution (after softmax), from which the next word can be predicted/sampled.
+
+ #### MLP BLOCK
+ * Stores "facts" and "memory" regarding the input statements. 
+ * Source: [_Deep Learning: 3b1b Lecture 7_](https://www.youtube.com/watch?v=9-Jl0dxWQs8&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=7)
 </details>
 
 .<br>
@@ -95,6 +146,7 @@ parameters, leading to poor generalization of unseen data.
 <i>
   
 ### _Primary_
+* [Stat Quest Word2Vec](https://www.youtube.com/watch?v=viZrOnJclY0)
 * [Stat Quest Paper Review](https://www.youtube.com/watch?v=zxQyTK8quyY)
 * [3b1b Deep Learning Series](https://www.youtube.com/watch?v=eMlx5fFNoYc&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=6)
 
