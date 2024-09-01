@@ -357,7 +357,7 @@
 &nbsp;
 # Transformers, ViT & SAM 
 
-#### [Transformers](https://arxiv.org/abs/1706.03762), [ViT](https://arxiv.org/abs/2010.11929), [Segment Anything Model](https://arxiv.org/abs/2304.02643) - `One read through complete`
-#### Research summary/literature review in respective .md files in the `Research` Folder - `Work in Progress`
+* [Transformers](https://arxiv.org/abs/1706.03762), [ViT](https://arxiv.org/abs/2010.11929), [Segment Anything Model](https://arxiv.org/abs/2304.02643) - `One read through complete`
+* Research summary/literature review in respective .md files in the `Research` Folder - `Work in Progress`
 
 
