@@ -10,6 +10,7 @@ other tasks by successfully applying it to English constituency parsing with
 large and limited training data.
 &nbsp;
 
+
 .<br>
 ## Learnings
 
@@ -18,17 +19,17 @@ large and limited training data.
   <summary><i> Details </i></summary>
 
   #### WHY EMBEDDINGS ?
-  * Neural Network understand vectors and not the words we speak.
+  * Neural Networks understand vectors and not the words we speak.
   * We need a way to convert words to vectors.
 
   #### PROCESS FOR EMBEDDING
   > <img src ="https://github.com/user-attachments/assets/a7e1893b-b3d9-4f8c-b171-b78e4a0095f6" alt="Word Embeddings" width="380" height="320"> <br>
 
   * We make use of a MLP: 
-    * One-hot like Input given to MLP. Varies from technique to technique. 
+    * One-hot-like Input given to MLP. Varies from technique to technique. 
     * Number of Input neurons = Total number of tokens in the model's "vocabulary".
     * Hidden layer(s) with activations followed by an output layer.
-    * Output vector = Embedding of corresponding token. 
+    * Output vector = Embedding of the corresponding token. 
   * The "Embedding Space" is a very high dimensional space where similarity between <br>
     various words and their relations are stored.
 </details>
@@ -38,14 +39,14 @@ large and limited training data.
   <summary><i> Details </i></summary>
   
   #### WHY POSITIONAL ENCODING ?
-  * Order of words in a sentence carry semantic value.
+  * The order of words in a sentence carries semantic value.
   * Before passing an input to a transformer, it is important along with the Word Embeddings <br>
-    we lay importance on the position of words in a sentence throught Positional Embeddings.
+    we emphasise the position of words in a sentence through Positional Embeddings.
 
  #### PROCESS FOR ENCODING
  > <img src="https://github.com/user-attachments/assets/31cd6a4b-937d-4d50-81dd-c1790c0d70b0" alt="Positional Encoding" width="380" height="320"> <br>
  * Among various positional values, some components might have same value, however, the value vector as a whole remains unique.
- * The value vector is added to the Word Embedding to get Positional Encoding of the token.
+ * The value vector is added to the Word Embedding to get the token conditional encoding.
 
 </details>
 
@@ -114,11 +115,11 @@ large and limited training data.
   
   #### ATTENTION BLOCK
   * 1st Attention Block takes original positional encodings of the sentence(s) as input. It outputs updated encodings <br>
-  for each token (**based on the mult-head attention concept**) in the sentence(s) allowing for information and context flow. 
+  for each token (**based on the mult-head attention concept**) in the sentence(s), allowing for information and context flow. 
   * 2nd Attention Block takes these **updated encodings added with initial positional encodings** (Residual Connections) <br>
-  as their input and the process repeats... <br>
+  as their input, and the process repeats... <br>
   _Finally_,
-  * Generally the goal is that the last embedding in the output of the last Attention block, encodes the entire context and <br>
+  * Generally, the goal is that the last embedding in the output of the last Attention block encodes the entire context and <br>
   acts as a probability distribution (after softmax), from which the next word can be predicted/sampled.
 
  #### MLP BLOCK
@@ -129,9 +130,29 @@ large and limited training data.
 ### 6. _Final Structure_
 <details>
   <summary><i> Details </i></summary>
-  > Overall structure for a Transformer as proposed in the paper <br>
+  
+  > #### _OVERLL STRUCTURE_ <br>
   > <img src = "https://github.com/user-attachments/assets/b7b68fe1-116c-47e3-b77e-3e3d62b75813" alt="Multi Headed" width="400" height="600"> <br>
+  > <img src = "https://github.com/user-attachments/assets/7c119757-1dda-42e1-bf38-b3ce7bb7fe07" alt="Multi Headed" width="400" height="200"> <br>
+
+  #### WHY AND WHEN DO WE NEED ENCODER & DECODER BLOCKS:
+  
+  ##### 1. **Why Do We Need a Decoder Block?**
+   - **Sequence-to-Sequence Tasks:** The original transformer model, as introduced in the paper "Attention is All You Need," was <br>
+     designed for sequence-to-sequence (seq2seq) tasks like machine translation. In these tasks, the model needs to convert an input <br>
+     sequence (e.g., a sentence in English) into an output sequence (e.g., a sentence in French). The encoder processes the input sentence, <br>
+     and the decoder generates the translated sentence token by token, conditioned on the encoder's output and the previously generated tokens.
+   - **Autoregressive Generation:** The decoder operates autoregressively, meaning it generates one token at a time, and each token is conditioned <br>
+     on the tokens generated before it. This is crucial for tasks where the output sequence depends on previously generated tokens, like text generation or 
+     translation.
+  
+  ##### 2. **Predicting the Next Word in a Sentence:**
+   - **Next-Word Prediction Task:** If you're using a transformer to predict the next word in a sentence, you're dealing with a language modelling task. <br>
+     In this case, you don't necessarily need the full encoder-decoder architecture.
+   - **Decoder-Only Models (e.g., GPT):** For next-word prediction, you can use a **decoder-only** transformer model, like GPT (Generative Pre-trained <br> 
+     Transformer). In such models, the transformer architecture consists only of a stack of decoder blocks. Each block attends to the sequence of tokens already <br> generated (or provided as input) and predicts the next token based on this context.
 </details>
+
 
 .<br>
 ## Limitations
@@ -146,9 +167,6 @@ curating such large datasets can be challenging.
 
 * **Overfitting Risk:** When trained on small datasets, transformers are prone to overfitting due to their large number of <br>
 parameters, leading to poor generalization of unseen data.
-
-.<br>
-## Conclusion
 
 
 .<br>
@@ -199,16 +217,24 @@ fewer computational resources to train
 &nbsp;
 
 ## Learnings
+> #### SIMILARITY TO TRANSFORMER FOR NLP
+> * Multi-head self-attention and the Transformer Encoder are all carried over.
+> * The main difference lies in how the image is "fed" to the network.
+
+### _1. An Image is worth 16x16 words_
+<details>
+  <summary><i> Details </i></summary>
+  
+  
+</details>
 
 
+.<br>
 ## Limitations
 
 
-## Conclusion
-
-
+.<br>
 ## Resources Used
-> ###### _**TO DO_
 <i>
   
 ### _Primary_
