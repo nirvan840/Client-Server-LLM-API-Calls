@@ -10,7 +10,7 @@ other tasks by successfully applying it to English constituency parsing with
 large and limited training data.
 &nbsp;
 
-
+.<br>
 ## Learnings
 
 ### _1. Word Embeddings_
@@ -215,6 +215,8 @@ results compared to state-of-the-art convolutional networks while requiring subs
 fewer computational resources to train
 &nbsp;
 
+
+.<br>
 ## Learnings
 > #### SIMILARITY TO TRANSFORMER FOR NLP
 > * Multi-head self-attention and the Transformer Encoder are all carried over.
