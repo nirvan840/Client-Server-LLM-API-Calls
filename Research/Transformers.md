@@ -218,21 +218,38 @@ fewer computational resources to train
 
 .<br>
 ## Learnings
-> #### SIMILARITY TO TRANSFORMER FOR NLP
-> * Multi-head self-attention and the Transformer Encoder are all carried over.
-> * The main difference lies in how the image is "fed" to the network.
 
-### _1. An Image is worth 16x16 words_
-<details>
-  <summary><i> Details </i></summary>
-  
-  
-</details>
+### Similar to Transformers
+* Multi-head self-attention and the Transformer Encoder are all carried over.
+* The main difference lies in how the image is "fed" to the network.
+* The ViT is trained to predict a classification score rather than the "next token". 
 
+### 16x16 words?
+* A Transformer generally uses tokens as input, each represented by a vector/encoding.
+* Given an image, breaking it down into patches is analogous to words in a sentence.
+* These `patches/"words"` can be projected to a vector and given as input to the transformer.
+* The transformer can now learn the context of this `image/"sentence"` much better than a CNN can.
+
+### Overall Architecture
+<img src = "https://github.com/user-attachments/assets/8587a6a2-f981-455d-9a52-30c783d667df" alt="Overall Struc" width="420" height="280"> <br>
+_Figure depicting the entire structure of the ViT_ <br>
+
+### Converting Images to "words"
+<img src = "https://github.com/user-attachments/assets/ee2a4d54-f2ff-4b18-ad24-c045be1590ed" alt="Patch to Word" width="420" height="280"> <br>
+<img src = "https://github.com/user-attachments/assets/82ec28b3-d498-413e-a944-871606c438ee" alt="Patch to Word" width="420" height="280"> <br>
+_Figures depicting the conversion of Image patch to embedding_ <br>
 
 .<br>
-## Limitations
+## Strengths
+* The initial layer of CNNs has a low receptive field. The receptive field slowly grows as we go <br>
+  deeper into the network. This makes it harder for CNNs to "understand" the complete "context" of an image.
 
+* Transformers, on the other hand, use self-attention; thus, from the first layer itself, the Transformer has <br>
+  a global perceptive field, allowing it to learn the context in images better. <br>
+  
+  <img src = "https://github.com/user-attachments/assets/6f7e251d-26d7-41a5-b008-e991499ec50d" alt="Patch to Word" width="280" height="200"> <br>
+
+* Require significantly less computing than a CNN while achieving better performance.
 
 .<br>
 ## Resources Used
