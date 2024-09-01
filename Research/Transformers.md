@@ -11,7 +11,6 @@ large and limited training data.
 &nbsp;
 
 
-.<br>
 ## Learnings
 
 ### _1. Word Embeddings_
