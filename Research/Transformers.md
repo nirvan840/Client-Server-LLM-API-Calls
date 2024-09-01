@@ -104,16 +104,19 @@ large and limited training data.
   > <img src = "https://github.com/user-attachments/assets/76e1ab7a-4a1e-4939-947c-20a926d2a854" alt="Multi Headed Result" width="420" height="300"> <br>
   * Multiple distinct Key, Query, and Value Matrices to allow various interpretations/attention patterns. <br>
   * The second figure shows how each embedding is updated after a multi-headed operation.
+  * The concatenated embeddings are then **projected to a lower dimension** by taking dot product with **WO (projection) matrix** to reduce <br>
+    the concatenated output's dimensions back to the **same dimensions as the input to the attenion block.**
 </details>
 
-### _5. ATTENTION BLOCK AND MLP BLOCK_
+### _5. Attention and MLP Blocks_
 <details>
   <summary><i> Details </i></summary>
-
+  
   #### ATTENTION BLOCK
   * 1st Attention Block takes original positional encodings of the sentence(s) as input. It outputs updated encodings <br>
-  for each token in the sentence(s) allowing for information and context flow. 
-  * 2nd Attention Block takes these updated encodings as their input and the process repeats... <br>
+  for each token (**based on the mult-head attention concept**) in the sentence(s) allowing for information and context flow. 
+  * 2nd Attention Block takes these **updated encodings added with initial positional encodings** (Residual Connections) <br>
+  as their input and the process repeats... <br>
   _Finally_,
   * Generally the goal is that the last embedding in the output of the last Attention block, encodes the entire context and <br>
   acts as a probability distribution (after softmax), from which the next word can be predicted/sampled.
@@ -121,6 +124,13 @@ large and limited training data.
  #### MLP BLOCK
  * Stores "facts" and "memory" regarding the input statements. 
  * Source: [_Deep Learning: 3b1b Lecture 7_](https://www.youtube.com/watch?v=9-Jl0dxWQs8&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=7)
+</details>
+
+### 6. _Final Structure_
+<details>
+  <summary><i> Details </i></summary>
+  > Overall structure for a Transformer as proposed in the paper <br>
+  > <img src = "https://github.com/user-attachments/assets/b7b68fe1-116c-47e3-b77e-3e3d62b75813" alt="Multi Headed" width="400" height="600"> <br>
 </details>
 
 .<br>
